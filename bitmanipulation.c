@@ -1,64 +1,20 @@
-#include <stdio.h>
-#include <stdbool.h>
+#include<bits/stdc++.h>
+using namespace std;
 
-bool isPowerOfTwo(int x)
+void getOddOccurrence(int a[],int n)
 {
-    return (x && !(x & (x - 1)));
+    int temp=0;
+    
+    for(int i=0;i<n;i++)
+        temp=temp^a[i];
+    
+    cout<<temp;
 }
 
-int count_one (int n)
-    {   
-        int count=0;
-        while( n )
-        {
-        n = n&(n-1);
-           count++;
-        }
-        return count;
-}
-
-bool check (int N)
-{   
-    int i;
-    printf("\nEnter the postion to check :");
-    scanf("%d",&i);
-    if( N & (1 << i) )
-        return true;
-    else
-        return false;
-}
-
-long largest_power(long N)
+int main()
 {
-    N = N| (N>>1);
-    N = N| (N>>2);
-    N = N| (N>>4);
-    N = N| (N>>8);
-
-            return (N+1)>>1;
-
-}
-
-int main()  {
-     int n;
-     printf("Enter the number to check : ");
-     scanf("%d",&n);
-     
-     if(isPowerOfTwo(n))
-        printf("The number is power of 2");
-     else
-        printf("\nThe number is not power of 2");
-     
-     printf("\nNumber of ones in given number : %d",count_one (n));
-     
-     if(check (n))
-        printf("1 is present at given position");
-     else
-        printf("1 is not present at given position");
-     
-     printf("\nThe largest power of a number : %ld",largest_power(n));
-     
-     
-     return 0;
-       
+    int arr[]={1,4,5,6,3,4,1,3,5};
+    int size=sizeof(arr)/sizeof(arr[0]);
+    
+    getOddOccurrence(arr,size);
 }
